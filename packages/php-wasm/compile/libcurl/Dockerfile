@@ -57,7 +57,7 @@ exit 0; \n' > /root/emsdk/upstream/bin/wasm-ld && \
 
 RUN source /root/emsdk/emsdk_env.sh && \
 EMCC_SKIP="-lc -lz -lcurl -lssl " \
-EMCC_FLAGS="-sSIDE_MODULE -Wl,--wrap=select " emmake make -i || true 
+EMCC_FLAGS="-sSIDE_MODULE -Wl,--wrap=select " emmake make -i || true
 
 RUN source /root/emsdk/emsdk_env.sh && \
 EMCC_SKIP="-lc -lz -lcurl -lssl " \

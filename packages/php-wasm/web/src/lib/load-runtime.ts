@@ -5,6 +5,7 @@ import {
 	SupportedPHPVersion,
 } from '@php-wasm/universal';
 import { getPHPLoaderModule } from './get-php-loader-module';
+import * as tls from './tls-proxy';
 
 export interface LoaderOptions {
 	emscriptenOptions?: EmscriptenOptions;
@@ -23,6 +24,7 @@ const fakeWebsocket = () => {
 			decorator: (WebSocketConstructor: any) => {
 				return class FakeWebsocketConstructor extends WebSocketConstructor {
 					constructor() {
+						console.log('Called constructor()!');
 						try {
 							super();
 						} catch (e) {
@@ -31,6 +33,7 @@ const fakeWebsocket = () => {
 					}
 
 					send() {
+						console.log('Called send()!');
 						return null;
 					}
 				};
@@ -50,6 +53,7 @@ export async function loadWebRuntime(
 	options.onPhpLoaderModuleLoaded?.(phpLoaderModule);
 	return await loadPHPRuntime(phpLoaderModule, {
 		...(options.emscriptenOptions || {}),
-		...fakeWebsocket(),
+		// ...fakeWebsocket(),
+		...tls.fetchingWebsocket(),
 	});
 }

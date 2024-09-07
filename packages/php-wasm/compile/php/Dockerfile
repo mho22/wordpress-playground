@@ -500,10 +500,13 @@ RUN echo -n ' -s ASYNCIFY=1 -s ASYNCIFY_IGNORE_INDIRECT=1 ' >> /root/.emcc-php-w
 "curl_easy_perform",\
 "Curl_wait_ms",\
 "Curl_http_connect",\
+"Curl_proxy_connect",\
 "RAND_status",\
 "rand_status",\
 "__wrap_select",\
 "Curl_socket_check",\
+"call_extract_if_dead",\
+"Curl_conncache_foreach",\
 "Curl_is_connected",\
 "multi_runsingle",\
 "curl_multi_perform",\
@@ -565,6 +568,7 @@ RUN echo -n ' -s ASYNCIFY=1 -s ASYNCIFY_IGNORE_INDIRECT=1 ' >> /root/.emcc-php-w
 "_php_stream_free_enclosed",\
 "stream_resource_persistent_dtor",\
 "stream_resource_regular_dtor",\
+"stream_array_from_fd_set",\
 "zend_std_has_dimension",\
 "zend_isset_isempty_dim_prop_obj_handler_SPEC_CV_CONST",\
 "zend_assign_to_object",\
@@ -846,6 +850,7 @@ RUN echo -n ' -s ASYNCIFY=1 -s ASYNCIFY_IGNORE_INDIRECT=1 ' >> /root/.emcc-php-w
 "zend_list_close",\
 "zif_proc_close",\
 "zif_stream_socket_client",\
+"zif_stream_select",\
 "zim_PDOStatement_execute",\
 "zim_PDO___construct",\
 "zim_PDO_beginTransaction",\

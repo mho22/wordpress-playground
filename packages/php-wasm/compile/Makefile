@@ -58,7 +58,7 @@ libxml2/dist/root/lib/lib/libxml2.a: base-image
 libopenssl: libopenssl/dist/root/lib/lib/libssl.a
 libopenssl/dist/root/lib/lib/libssl.a: base-image libz
 	mkdir -p ./libopenssl/dist/root/lib
-	docker build -f ./libopenssl/Dockerfile -t playground-php-wasm:libopenssl . --progress=plain
+	docker build --no-cache -f ./libopenssl/Dockerfile -t playground-php-wasm:libopenssl . --progress=plain
 	docker cp $$(docker create playground-php-wasm:libopenssl):/root/install/lib ./libopenssl/dist/root/lib
 	docker cp $$(docker create playground-php-wasm:libopenssl):/root/install/include ./libopenssl/dist/root/lib
 
@@ -106,7 +106,7 @@ oniguruma/dist/root/lib/lib/libonig.a: base-image
 libcurl: libcurl/dist/root/lib/lib/libcurl.a
 libcurl/dist/root/lib/lib/libcurl.a: base-image libz libopenssl
 	mkdir -p ./libcurl/dist/root/lib
-	docker build -f ./libcurl/Dockerfile -t playground-php-wasm:libcurl . --progress=plain
+	docker build --no-cache -f ./libcurl/Dockerfile -t playground-php-wasm:libcurl . --progress=plain
 	docker cp $$(docker create playground-php-wasm:libcurl):/root/curl-7.69.1/lib/.libs ./libcurl/dist/root/lib/lib
 	docker cp $$(docker create playground-php-wasm:libcurl):/root/curl-7.69.1/include/ ./libcurl/dist/root/lib
 

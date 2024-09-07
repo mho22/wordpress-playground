@@ -123,13 +123,16 @@ const platformDefaults = {
 	},
 	['web-light']: {},
 	['web-kitchen-sink']: {
+		WITH_CURL: 'yes',
 		WITH_FILEINFO: 'yes',
 		WITH_ICONV: 'yes',
 		WITH_LIBXML: 'yes',
 		WITH_GD: 'yes',
 		WITH_MBSTRING: 'yes',
 		WITH_MBREGEX: 'yes',
+		WITH_CLI_SAPI: 'yes',
 		WITH_OPENSSL: 'yes',
+		WITH_WS_NETWORKING_PROXY: 'yes',
 	},
 	node: {
 		WITH_CURL: 'yes',
@@ -180,6 +183,7 @@ await asyncSpawn(
 	'docker',
 	[
 		'build',
+		'--no-cache',
 		'-f',
 		'php/Dockerfile',
 		'.',
