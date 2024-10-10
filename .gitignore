@@ -17,6 +17,7 @@ rollup.d.ts
 # dependencies
 node_modules
 /__interactive-code-batteries
+vendor
 
 # IDEs and editors
 /.idea
