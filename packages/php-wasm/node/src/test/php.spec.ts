@@ -1922,7 +1922,6 @@ bar1
 			const out = await php.run({
 				code: `<?php var_dump(post_message_to_js('a'));`,
 			});
-
 			expect(out.errors).toBe('');
 			expect(out.text).toBe('NULL\n');
 		});
